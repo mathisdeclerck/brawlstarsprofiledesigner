@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brawl Stars Profile Maker</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #254a62, #1f4256);
+            justify-content: center;
+            align-items: center;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #27ae60;
+            padding: 10px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 36px;
+            text-align: center;
+            color: #7fffd4;
+        }
+
+        div {
+            margin: 0;
+            font-size: 25px;
+            text-align: center;
+            color: white;
+        }
+
+        p {
+            margin: 0;
+            font-size: 25px;
+            text-align: center;
+        }
+
+        h2 {
+            margin: 0;
+            font-size: 36px;
+            text-align: center;
+        }
+
+        .profile-container {
+            width: 1280px;
+            height: 600px;
+            margin: 20px auto;
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            background-color: white;
+        }
+
+        .content-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        nav {
+            background-color: #1d3021;
+            padding: 10px;
+            text-align: center;
+        }
+
+            nav button {
+                color: white;
+                background-color: #34495e;
+                border: 2px solid #1d3021;
+                margin: 10px;
+                font-size: 18px;
+                cursor: pointer;
+                padding: 10px 20px;
+                border-radius: 5px;
+                transition: all 0.3s ease;
+            }
+
+                nav button:hover {
+                    background-color: #1d3021;
+                    border-color: #34495e;
+                }
+
+            nav input[type="text"] {
+                padding: 8px;
+                font-size: 16px;
+            }
+
+            nav input[type="submit"] {
+                padding: 8px 12px;
+                font-size: 16px;
+                cursor: pointer;
+                background-color: #3498db;
+                color: white;
+                border: none;
+            }
+
+        main {
+            padding: 20px;
+        }
+
+        .square {
+            position: absolute;
+        }
+
+        section {
+            margin-bottom: 30px;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .social-icons {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+            .social-icons a {
+                display: inline-block;
+                margin: 0 10px;
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                text-align: center;
+                border-radius: 50%;
+                background-color: #333;
+                color: #fff;
+                text-decoration: none;
+                transition: background-color 0.3s ease;
+            }
+
+                .social-icons a:hover {
+                    background-color: #555;
+                    margin: 10px;
+                }
+
+            .social-icons img {
+                width: 100%;
+                height: auto;
+            }
+        .main-square {
+            width: 120px;
+            height: 120px;
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            border: 2px solid black;
+            top: 88px;
+            left: 536px;
+        }
+        .main-fame {
+            width: 110px;
+            height: 130px;
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            top: 88px;
+            left: 1085px;
+        }
+        .main-club {
+            width: 58px;
+            height: 64px;
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            top: 382px;
+            left: 631px;
+        }
+        .main-hranked, .main-cranked {
+            width: 70px;
+            height: 50px;
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            z-index: 1000;
+        }
+
+        .main-hranked {
+            top: 249px;
+            left: 769px;
+        }
+
+        .main-cranked {
+            top: 249px;
+            left: 985px;
+        }
+
+        .image-buttons {
+            gap: 40px;
+        }
+
+        .image-button {
+            width: 150px;
+            height: 150px;
+            cursor: pointer;
+        }
+        .fame-image-button {
+            width: 150px;
+            height: 172px;
+            cursor: pointer;
+        }
+        .club-image-button {
+            width: 100px;
+            height: 110px;
+            cursor: pointer;
+        }
+        .hranked-image-button {
+            width: 200px;
+            height: 150px;
+            cursor: pointer;
+        }
+        .cranked-image-button {
+            width: 200px;
+            height: 150px;
+            cursor: pointer;
+        }
+            .image-button img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        .button-container {
+            text-align: center;
+        }
+        .big-yellow-button {
+            background-color: #f1c40f;
+            color: white;
+            padding: 20px 40px;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            display: inline-block;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .big-yellow-button::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 300%;
+                height: 300%;
+                background: radial-gradient(circle, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0) 70%);
+                transform: translate(-50%, -50%) scale(0);
+                transition: transform 0.5s ease-in-out;
+            }
+
+            .big-yellow-button:hover::before {
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            .big-yellow-button:hover {
+                background-color: #d4ac0d; 
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            }
+
+            .big-yellow-button:active {
+                background-color: #b48a0b;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            .big-yellow-button::after {
+                content: '';
+                position: absolute;
+                top: -10%;
+                left: -20%;
+                width: 140%;
+                height: 140%;
+                background: linear-gradient(45deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0) 70%);
+                transform: rotate(45deg);
+                transition: transform 0.5s ease-in-out;
+                z-index: 1;
+            }
+
+            .big-yellow-button:hover::after {
+                transform: translateX(150%) rotate(45deg);
+            }
+
+            .big-yellow-button span {
+                position: relative;
+                z-index: 2;
+            }
+    </style>
+</head>
+<body>
+    <header style="display: flex; align-items: center; justify-content: center; height: 150px;">
+        <img src="images/bslogooo.PNG" alt="Description of your image" style="margin-right: 15px; height: 100%;">
+        <h1 style="margin: 0; font-size: 95px;">Profile Designer</h1>
+    </header>
+
+    <nav>
+        <form id="searchForm" onsubmit="searchFunction(); return false;">
+            <input id="searchInput" type="text" name="search" placeholder="Find a cosmetic...">
+            <input type="submit" value="Search">
+        </form>
+        <br />
+        <div class="button-grid">
+            <button href="#explore">Skins</button>
+            <button href="#trending">Profile icons</button>
+            <button href="#freetouse">Highest rank</button>
+            <button href="#laptops">Current rank</button>
+            <button href="#phones">Icon 1</button>
+            <button href="#phones">Icon 2</button>
+            <button href="#phones">Pin</button>
+            <button href="#phones">Name</button>
+            <button href="#flowers">Trophiecount</button>
+            <button href="#phones">3v3 wins</button>
+            <button href="#phones">Solo wins</button>
+            <button href="#phones">Duo wins</button>
+            <button href="#aboutus">About us</button>
+            <button href="#contactus">Contact Us</button>
+        </div>
+    </nav>
+    <br />
+
+    <div class="profile-container">
+        <img src="images/profileedited.png" alt="Example of a random person's profile" style="width: 1280px; height: 600px; display: block; margin: 0 auto;">
+        <a href="#bottom-text">
+            <div class="main-square" id="mainSquare"></div>
+        </a>
+        <a href="#bottom-text">
+            <div class="main-fame" id="mainFame"></div>
+        </a>
+        <a href="#bottom-text">
+            <div class="main-club" id="mainClub"></div>
+        </a>
+        <a href="#bottom-text">
+            <div class="main-hranked" id="mainHRanked"></div>
+        </a>
+        <a href="#bottom-text">
+            <div class="main-cranked" id="mainCRanked"></div>
+        </a>
+        <input type="text" id="usernameInput" style="position: absolute; width: 320px; height: 30px; top: 108px; left: 680px; font-size: 34px; border: none; font-weight: bold; color: white; background: none;">
+        <input type="text" id="usernameInput" style="position: absolute; width: 135px; height: 24px; top: 199px; left: 540px; font-size: 17px; border: none; font-weight: bold; color: lightgrey; background: none;">
+    </div>
+
+    <div class="button-container">
+        <button class="big-yellow-button"><span>Save your design!</span></button>
+    </div>
+
+    <br />
+    <hr />
+    <br />
+    <br />
+    <div style="margin: 0; font-size: 35px;">Profile icons</div>
+    <br />
+    <br />
+    <div class="image-buttons">
+        <a href="#">
+            <img src="images/player_icon_stu_university.PNG" alt="Image 1" class="image-button" onclick="changeImage('images/player_icon_stu_university.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/player_icon_edgar_mecha.PNG" alt="Image 2" class="image-button" onclick="changeImage('images/player_icon_edgar_mecha.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/player_icon_stu_xmas.PNG" alt="Image 3" class="image-button" onclick="changeImage('images/player_icon_stu_xmas.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/profile_icon_esports_cyberbrawl.PNG" alt="Image 2" class="image-button" onclick="changeImage('images/profile_icon_esports_cyberbrawl.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/profile_icon_easter2023.PNG" alt="Image 3" class="image-button" onclick="changeImage('images/profile_icon_easter2023.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/profile_icon_creatorss.PNG" alt="Image 2" class="image-button" onclick="changeImage('images/profile_icon_creatorss.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/profile_icon_badrandoms.PNG" alt="Image 3" class="image-button" onclick="changeImage('images/profile_icon_badrandoms.PNG')">
+        </a>
+    </div>
+    <div class="image-buttons">
+        <a href="#">
+            <img src="images/player_icon_colette1.PNG" alt="Image 1" class="image-button" onclick="changeImage('images/player_icon_colette1.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/player_icon_buster1.PNG" alt="Image 2" class="image-button" onclick="changeImage('images/player_icon_buster1.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/player_icon_esports_luminosity.PNG" alt="Image 3" class="image-button" onclick="changeImage('images/player_icon_esports_luminosity.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/profile_icon_spike_robo.PNG" alt="Image 2" class="image-button" onclick="changeImage('images/profile_icon_spike_robo.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/profile_icon_hank1.PNG" alt="Image 3" class="image-button" onclick="changeImage('images/profile_icon_hank1.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/profile_icon_bo_hindu.PNG" alt="Image 2" class="image-button" onclick="changeImage('images/profile_icon_bo_hindu.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/profile_icon_sprout_lunar.PNG" alt="Image 3" class="image-button" onclick="changeImage('images/profile_icon_sprout_lunar.PNG')">
+        </a>
+    </div>
+    <br />
+    <hr />
+    <br />
+    <br />
+    <div style="margin: 0; font-size: 35px;">Fame levels</div>
+    <br />
+    <br />
+    <div class="image-buttons">
+        <a href="#">
+            <img src="images/icon_fame_1_1.PNG" alt="Image 1" class="fame-image-button" onclick="changeFAME('images/icon_fame_1_1.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/icon_fame_1_2.PNG" alt="Image 2" class="fame-image-button" onclick="changeFAME('images/icon_fame_1_2.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/icon_fame_1_3.PNG" alt="Image 3" class="fame-image-button" onclick="changeFAME('images/icon_fame_1_3.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/icon_fame_2.PNG" alt="Image 4" class="fame-image-button" onclick="changeFAME('images/icon_fame_2.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/icon_fame_3.PNG" alt="Image 5" class="fame-image-button" onclick="changeFAME('images/icon_fame_3.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/icon_fame_4.PNG" alt="Image 6" class="fame-image-button" onclick="changeFAME('images/icon_fame_4.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/icon_fame_5.PNG" alt="Image 7" class="fame-image-button" onclick="changeFAME('images/icon_fame_5.PNG')">
+        </a>
+    </div>
+    <br />
+    <hr />
+    <br />
+    <br />
+    <div style="margin: 0; font-size: 35px;">Highest rank</div>
+    <br />
+    <br />
+    <div class="image-buttons">
+        <a href="#">
+            <img src="images/icon_ranked_bronze.PNG" alt="Image 1" class="hranked-image-button" onclick="changeHRanked('images/icon_ranked_bronze.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/icon_ranked_silver.PNG" alt="Image 2" class="hranked-image-button" onclick="changeHRanked('images/icon_ranked_silver.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/icon_ranked_gold.PNG" alt="Image 2" class="hranked-image-button" onclick="changeHRanked('images/icon_ranked_gold.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/icon_ranked_diamond.PNG" alt="Image 2" class="hranked-image-button" onclick="changeHRanked('images/icon_ranked_diamond.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/icon_ranked_mythic.PNG" alt="Image 3" class="hranked-image-button" onclick="changeHRanked('images/icon_ranked_mythic.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/icon_ranked_legendary.PNG" alt="Image 2" class="hranked-image-button" onclick="changeHRanked('images/icon_ranked_legendary.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/icon_ranked_masters.PNG" alt="Image 2" class="hranked-image-button" onclick="changeHRanked('images/icon_ranked_masters.PNG')">
+        </a>
+    </div>
+    <br />
+    <hr />
+    <br />
+    <br />
+    <div style="margin: 0; font-size: 35px;">Current rank</div>
+    <br />
+    <br />
+    <div class="image-buttons">
+        <a href="#">
+            <img src="images/icon_ranked_bronze.PNG" alt="Image 1" class="cranked-image-button" onclick="changeCRanked('images/icon_ranked_bronze.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/icon_ranked_silver.PNG" alt="Image 1" class="cranked-image-button" onclick="changeCRanked('images/icon_ranked_silver.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/icon_ranked_gold.PNG" alt="Image 2" class="cranked-image-button" onclick="changeCRanked('images/icon_ranked_gold.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/icon_ranked_diamond.PNG" alt="Image 2" class="cranked-image-button" onclick="changeCRanked('images/icon_ranked_diamond.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/icon_ranked_mythic.PNG" alt="Image 3" class="cranked-image-button" onclick="changeCRanked('images/icon_ranked_mythic.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/icon_ranked_legendary.PNG" alt="Image 2" class="cranked-image-button" onclick="changeCRanked('images/icon_ranked_legendary.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/icon_ranked_masters.PNG" alt="Image 2" class="cranked-image-button" onclick="changeCRanked('images/icon_ranked_masters.PNG')">
+        </a>
+    </div>
+    <br />
+    <hr />
+    <br />
+    <br />
+    <div style="margin: 0; font-size: 35px;">Club badges</div>
+    <br />
+    <br />
+    <div class="image-buttons">
+        <a href="#">
+            <img src="images/icon_club_badge_3.PNG" alt="Image 1" class="club-image-button" onclick="changeCLUB('images/icon_club_badge_3.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/icon_club_badge_10.PNG" alt="Image 1" class="club-image-button" onclick="changeCLUB('images/icon_club_badge_10.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/icon_club_badge_5.PNG" alt="Image 2" class="club-image-button" onclick="changeCLUB('images/icon_club_badge_5.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/icon_club_badge_8.PNG" alt="Image 2" class="club-image-button" onclick="changeCLUB('images/icon_club_badge_8.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/icon_club_badge_7.PNG" alt="Image 3" class="club-image-button" onclick="changeCLUB('images/icon_club_badge_7.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/icon_club_badge_4.PNG" alt="Image 2" class="club-image-button" onclick="changeCLUB('images/icon_club_badge_4.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/icon_club_badge_2.PNG" alt="Image 2" class="club-image-button" onclick="changeCLUB('images/icon_club_badge_2.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/icon_club_badge_9.PNG" alt="Image 2" class="club-image-button" onclick="changeCLUB('images/icon_club_badge_9.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/icon_club_badge_1.PNG" alt="Image 2" class="club-image-button" onclick="changeCLUB('images/icon_club_badge_1.PNG')">
+        </a>
+        <a href="#">
+            <img src="images/icon_club_badge_6.PNG" alt="Image 2" class="club-image-button" onclick="changeCLUB('images/icon_club_badge_6.PNG')">
+        </a>
+    </div>
+    <br />
+    <br />
+    <div style="display: flex; align-items: center; justify-content: center; height: 150px;">
+        <img src="images/bs-account.PNG" alt="image of a book" style="margin-right: 15px; height: 55px;">
+        <div style="margin: 0; font-size: 20px;">Note: You might not find every single cosmetic in the game yet, since we are only using what's available in the supercell fankit.'</div>
+    </div>
+    <div style="margin: 0; font-size: 20px;">
+        The cosmetic you need might be added later in the future!
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <p style="margin: 0; font-size: 40px;">Social media:</p>
+    <div class="social-icons">
+        <a href="https://www.facebook.com/YourPage" target="_blank">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/facebook.svg"
+                 alt="Facebook">
+        </a>
+        <a href="https://twitter.com/YourTwitter" target="_blank">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/twitter.svg"
+                 alt="Twitter">
+        </a>
+        <a href="https://www.instagram.com/YourInstagram" target="_blank">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/instagram.svg"
+                 alt="Instagram">
+        </a>
+        <a href="https://www.youtube.com/YourChannel" target="_blank">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/youtube.svg"
+                 alt="YouTube">
+        </a>
+        <a href="https://www.reddit.com/user/YourUsername" target="_blank">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/reddit.svg"
+                 alt="Reddit">
+        </a>
+    </div>
+
+    <br />
+    <br />
+    <p id="bottom-text">Create your dream profile!</p>
+
+    <footer>
+        &copy; 2024 Profile Designer for Brawlstars. All rights reserved.
+    </footer>
+
+    <script>
+        function changeImage(imagePath) {
+            const mainSquare = document.getElementById('mainSquare');
+            mainSquare.style.backgroundImage = `url('${imagePath}')`;
+        }
+        function changeFAME(imagePath) {
+            const mainFame = document.getElementById('mainFame');
+            mainFame.style.backgroundImage = `url('${imagePath}')`;
+        }
+        function changeCLUB(imagePath) {
+            const mainClub = document.getElementById('mainClub');
+            mainClub.style.backgroundImage = `url('${imagePath}')`;
+        }
+        function changeHRanked(imagePath) {
+            const mainHRanked = document.getElementById('mainHRanked');
+            mainHRanked.style.backgroundImage = `url('${imagePath}')`;
+        }
+        function changeCRanked(imagePath) {
+            const mainFame = document.getElementById('mainCRanked');
+            mainCRanked.style.backgroundImage = `url('${imagePath}')`;
+        }
+    </script>
+</body>
+</html>
